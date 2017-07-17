@@ -1,0 +1,2 @@
+cat "config\create sqliteDb\db-create.sql" | tools\sqlite3.exe data\bib.db
+cat "config\db-insert-admin.sql" | tools\sqlite3.exe data\bib.db

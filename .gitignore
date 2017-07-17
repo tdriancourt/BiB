@@ -1,4 +1,12 @@
 
+# ignore tools
+
+/tools
+
+# ignore server .net core bin and obj
+src/server/netCore/*/bin
+src/server/netCore/*/obj
+
 # ignore config.json (private data)
 # src/config.json
 
