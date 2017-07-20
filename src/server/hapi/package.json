@@ -1,0 +1,31 @@
+{
+  "name": "bib-server-hapi",
+  "version": "1.2.4",
+  "description": "server part of BiB Library Management Application for primary schools developped with Hapi framework in Typescript",
+  "main": "server.ts",
+  "scripts": {
+    "test": "echo \"no test\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tdriancourt/BiB.git"
+  },
+  "author": "Harris Brakmic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tdriancourt/BiB/issues"
+  },
+  "homepage": "https://github.com/tdriancourt/BiB#readme",
+  "dependencies": {
+    "boom": "^5.2.0",
+    "hapi": "^16.4.3",
+    "hapi-cors-headers": "^1.0.0",
+    "joi": "^10.6.0",
+    "lodash": "^4.17.4",
+    "node-fetch": "^1.7.1"
+  },
+  "devDependencies": {
+    "hapi": "^16.4.3",
+    "http-server": "^0.10.0"
+  }
+}
