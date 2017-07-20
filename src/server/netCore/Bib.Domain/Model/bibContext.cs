@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Bib.Domain.Model
 {
-    public partial class bibContext : DbContext
+    public partial class BibContext : DbContext
     {
         public virtual DbSet<Acl> Acl { get; set; }
         public virtual DbSet<Borrow> Borrow { get; set; }
@@ -14,12 +14,6 @@ namespace Bib.Domain.Model
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserGroup> UserGroup { get; set; }
         public virtual DbSet<UserSettings> UserSettings { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-            optionsBuilder.UseSqlite(@"DataSource=C:\Workspaces\BiB\data\bib.db");
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
