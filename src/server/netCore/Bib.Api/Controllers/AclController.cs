@@ -1,4 +1,4 @@
-using Bib.Domain.Security;
+using Bib.Domain.Model;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 

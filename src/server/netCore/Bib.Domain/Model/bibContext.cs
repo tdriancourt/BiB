@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace Bib.Domain.Bib_Domain.Model
+namespace Bib.Domain.Model
 {
     public partial class bibContext : DbContext
     {

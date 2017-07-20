@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Bib.Domain.Bib_Domain.Model
+namespace Bib.Domain.Model
 {
     public partial class Reader
     {
