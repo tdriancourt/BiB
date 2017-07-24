@@ -1,5 +1,5 @@
 using System;
-using Bib.Domain.Repository;
+using Bib.Domain.Repositories;
 
 namespace Bib.Data
 {

@@ -2,15 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using Bib.Domain.Repository;
+using Bib.Domain.Repositories;
 
 namespace Bib.Data
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class BaseRepository<T> : IRepository<T> where T : class
     {
         protected DbContext Context;
         
-        public Repository(DbContext context)
+        public BaseRepository(DbContext context)
         {
             Context = context;
         }
