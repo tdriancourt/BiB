@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Bib.Domain.Repositories;
+using Bib.Domain.Model;
+using System.Threading.Tasks;
 
 namespace Bib.Data
 {
-    public class BaseRepository<T> : IRepository<T> where T : class
+    public abstract class BaseRepository<T> : IRepository<T> where T : class
     {
-        protected DbContext Context;
+        protected BibContext Context;
         
-        public BaseRepository(DbContext context)
+        public BaseRepository(BibContext context)
         {
             Context = context;
         }
@@ -23,21 +25,15 @@ namespace Bib.Data
                 Context.Add(entity);
         }
 
-        public IEnumerable<T> Find(Expression<Func<T, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract IEnumerable<T> Find(Expression<Func<T, bool>> predicate);
 
-        public T Get(int id)
-        {
-            throw new NotImplementedException();
-        }
-
+        public abstract T Get(int id);
+        
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return Context.Set<T>().ToListAsync().Result;
         }
-
+        
         public void Remove(T entity)
         {
             if(entity == null)
@@ -45,5 +41,20 @@ namespace Bib.Data
                 
             Context.Remove(entity);
         }
+    }
+
+    public abstract class BaseAsyncRepository<T> : BaseRepository<T> where T : class
+    {
+        public BaseAsyncRepository(BibContext context) : base(context)
+        {}
+
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            return await Context.Set<T>().ToListAsync();
+        }
+
+        public abstract Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
+
+        public abstract Task<T> GetAsync(int id);
     }
 }

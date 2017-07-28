@@ -16,5 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="../Bib.Domain/Bib.Domain.csproj" />
     <ProjectReference Include="..\Bib.Services\Bib.Services.csproj" />
+    <ProjectReference Include="..\Bib.Data\Bib.Data.csproj" />
   </ItemGroup>
 </Project>

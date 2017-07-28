@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using Bib.Data;
 using Bib.Domain.Model;
 using Bib.Domain.Repositories;
@@ -8,8 +10,18 @@ namespace Bib.Data
 {
     public class UserSettingsRepository : BaseRepository<UserSettings>, IUserSettingsRepository
     {
-        public UserSettingsRepository(DbContext context) : base(context)
+        public UserSettingsRepository(BibContext context) : base(context)
         {
+        }
+
+        public override IEnumerable<UserSettings> Find(Expression<Func<UserSettings, bool>> predicate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override UserSettings Get(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

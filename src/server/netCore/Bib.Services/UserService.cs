@@ -5,6 +5,7 @@ using Bib.Services.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Threading.Tasks;
 
 namespace Bib.Services
 {
@@ -15,8 +16,8 @@ namespace Bib.Services
 
         public UserService(IMapper mapper, IUserRepository userRepository)
         {
-            Contract.Requires<ArgumentNullException>(userRepository != null);
-            Contract.Requires<ArgumentNullException>(mapper != null);
+            Contract.Requires(mapper != null);
+            Contract.Requires(userRepository != null);
             _mapper = mapper;
             _repository = userRepository;
         }
@@ -25,6 +26,14 @@ namespace Bib.Services
         {
             var users = _repository.GetAll();
             return _mapper.Map<IEnumerable<User>, IEnumerable<UserViewModel>>(users);
+        }
+
+        public async Task<IEnumerable<UserViewModel>> GetAllAsync()
+        {
+            var task = new Task<IEnumerable<UserViewModel>>(() => GetAll());
+            task.Start();
+
+            return await task;
         }
     }
 }

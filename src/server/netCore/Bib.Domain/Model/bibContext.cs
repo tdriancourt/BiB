@@ -15,6 +15,10 @@ namespace Bib.Domain.Model
         public virtual DbSet<UserGroup> UserGroup { get; set; }
         public virtual DbSet<UserSettings> UserSettings { get; set; }
 
+        public BibContext(DbContextOptions<BibContext> options) : base(options)
+        {
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Acl>(entity =>

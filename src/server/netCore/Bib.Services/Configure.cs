@@ -16,8 +16,8 @@ namespace Bib.Services
             {
                 cfg.AddProfiles(typeof(Configure).GetTypeInfo().Assembly);
             });
-
-            services.AddSingleton<IMapper, Mapper>();
+            services.AddSingleton<IMapper, Mapper>(m => new Mapper(Mapper.Configuration));
+            
             return services;
         }
     }
