@@ -1,7 +1,7 @@
 using System;
 using Bib.Domain.Repositories;
 
-namespace Bib.Data
+namespace Bib.Domain
 {
     public interface IUnitOfWork : IDisposable
     {

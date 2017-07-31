@@ -1,4 +1,5 @@
 using System;
+using Bib.Domain;
 using Bib.Domain.Model;
 using Bib.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +12,7 @@ namespace Bib.Data
         private BibContext _context;
         private IDbContextTransaction _transaction;
         
-        public UnitOfWork(DbContext context, IAclRepository aclRepository, IUserRepository userRepository)
+        public UnitOfWork(BibContext context, IAclRepository aclRepository, IUserRepository userRepository)
         {
             AclRepository = aclRepository;
             UserRepository = userRepository;
@@ -27,10 +28,6 @@ namespace Bib.Data
         public IUserGroupRepository UserGroupRepository { get; private set; }
         public IUserSettingsRepository UserSettingsRepository { get; private set; }
         public IUserRepository UserRepository {get; private set;}
-
-        Domain.Repositories.IAclRepository IUnitOfWork.AclRepository => throw new NotImplementedException();
-
-        Domain.Repositories.IUserRepository IUnitOfWork.UserRepository => throw new NotImplementedException();
 
         public void Complete()
         {

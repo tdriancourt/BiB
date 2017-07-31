@@ -6,7 +6,7 @@ namespace Bib.Services
 {
     public interface IUserService
     {
-        IEnumerable<UserViewModel> GetAll();
         Task<IEnumerable<UserViewModel>> GetAllAsync();
+        Task<UserViewModel> GetAsync(int id);
     }
 }

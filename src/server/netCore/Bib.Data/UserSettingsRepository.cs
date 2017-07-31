@@ -13,15 +13,5 @@ namespace Bib.Data
         public UserSettingsRepository(BibContext context) : base(context)
         {
         }
-
-        public override IEnumerable<UserSettings> Find(Expression<Func<UserSettings, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override UserSettings Get(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

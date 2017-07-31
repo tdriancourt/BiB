@@ -13,15 +13,5 @@ namespace Bib.Data
         public AclRepository(BibContext context) : base(context)
         {
         }
-
-        public override IEnumerable<Acl> Find(Expression<Func<Acl, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Acl Get(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

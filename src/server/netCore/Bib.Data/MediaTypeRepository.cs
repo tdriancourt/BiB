@@ -13,15 +13,5 @@ namespace Bib.Data
         public MediaTypeRepository(BibContext context) : base(context)
         {
         }
-
-        public override IEnumerable<MediaType> Find(Expression<Func<MediaType, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override MediaType Get(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Bib.Data;
+using Bib.Domain;
 using Bib.Domain.Model;
 using Bib.Domain.Repositories;
 using Bib.Services;
@@ -33,6 +34,7 @@ namespace Bib.Api
             // });
             Bib.Services.Configure.ConfigureMapping(services);
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IAclRepository, AclRepository>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
         }

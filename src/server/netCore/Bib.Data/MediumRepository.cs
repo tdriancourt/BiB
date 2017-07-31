@@ -13,15 +13,5 @@ namespace Bib.Data
         public MediumRepository(BibContext context) : base(context)
         {
         }
-
-        public override IEnumerable<Medium> Find(Expression<Func<Medium, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Medium Get(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

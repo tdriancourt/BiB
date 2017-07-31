@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Bib.Services.ViewModels;
 
 namespace Bib.Api
 {
@@ -11,26 +13,28 @@ namespace Bib.Api
     public class UserController : Controller
     {
         private IUserService _userService;
-        
+
         public UserController(IUserService userService)
         {
             Contract.Requires(userService != null);
 
             _userService = userService;
         }
-        
+
         [HttpGet("{id:int?}")]
         [ProducesResponseType(typeof(User), 200)]
         public async Task<ActionResult> Users(int? id)
         {
             try
             {
-                var users =  await _userService.GetAllAsync();
-                return Ok(users);
+                if (id.HasValue)
+                    return Ok(await _userService.GetAsync(id.Value));
+                else
+                    return Ok(await _userService.GetAllAsync());
             }
             catch (System.Exception ex)
             {
-                return BadRequest(ex.ToString());                
+                return BadRequest(ex.ToString());
             }
         }
 
@@ -38,7 +42,7 @@ namespace Bib.Api
         //[ProducesResponseType()]
         public async Task<ActionResult> CreateUser([FromBody]User user)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
                 return BadRequest();
 
             return Ok(new { Status = true, User = user });

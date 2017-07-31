@@ -6,34 +6,33 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
+using Bib.Domain;
 
 namespace Bib.Services
 {
     public class UserService : IUserService
     {
         private IMapper _mapper;
-        private IUserRepository _repository;
+        private IUnitOfWork _unitOfWork;
 
-        public UserService(IMapper mapper, IUserRepository userRepository)
+        public UserService(IMapper mapper, IUnitOfWork unitOfWork)
         {
             Contract.Requires(mapper != null);
-            Contract.Requires(userRepository != null);
+            Contract.Requires(unitOfWork != null);
             _mapper = mapper;
-            _repository = userRepository;
-        }
-
-        public IEnumerable<UserViewModel> GetAll()
-        {
-            var users = _repository.GetAll();
-            return _mapper.Map<IEnumerable<User>, IEnumerable<UserViewModel>>(users);
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<UserViewModel>> GetAllAsync()
         {
-            var task = new Task<IEnumerable<UserViewModel>>(() => GetAll());
-            task.Start();
+            return await _unitOfWork.UserRepository.GetAllAsync()
+                .ContinueWith(users => _mapper.Map<IEnumerable<User>, IEnumerable<UserViewModel>>(users.Result));
+        }
 
-            return await task;
+        public async Task<UserViewModel> GetAsync(int id)
+        {
+            return await _unitOfWork.UserRepository.GetAsync(id)
+                .ContinueWith(user => _mapper.Map<UserViewModel>(user.Result));
         }
     }
 }

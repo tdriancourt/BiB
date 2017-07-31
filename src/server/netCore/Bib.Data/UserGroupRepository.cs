@@ -13,15 +13,5 @@ namespace Bib.Data
         public UserGroupRepository(BibContext context) : base(context)
         {
         }
-
-        public override IEnumerable<UserGroup> Find(Expression<Func<UserGroup, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override UserGroup Get(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

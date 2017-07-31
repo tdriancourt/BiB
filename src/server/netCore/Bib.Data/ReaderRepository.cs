@@ -13,15 +13,5 @@ namespace Bib.Data
         public ReaderRepository(BibContext context) : base(context)
         {
         }
-
-        public override IEnumerable<Reader> Find(Expression<Func<Reader, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Reader Get(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

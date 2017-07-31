@@ -13,15 +13,5 @@ namespace Bib.Data
         public BorrowRepository(BibContext context) : base(context)
         {
         }
-
-        public override IEnumerable<Borrow> Find(Expression<Func<Borrow, bool>> predicate)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override Borrow Get(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
