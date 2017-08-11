@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace Bib.Api.Controllers
 {
-    public class MediaTypeController
+    public class MediaTypeController : Controller
     {
         
     }

@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace Bib.Api.Controllers
 {
-    public class ReaderController
+    public class ReaderController : Controller
     {
         
     }

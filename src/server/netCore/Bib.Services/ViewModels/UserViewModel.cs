@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace Bib.Services.ViewModels
 {
     public class UserViewModel

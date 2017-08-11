@@ -1,4 +1,5 @@
 using AutoMapper;
+using Bib.Domain;
 using Bib.Domain.Model;
 using Bib.Domain.Repositories;
 using Bib.Services.ViewModels;
@@ -6,7 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
-using Bib.Domain;
 
 namespace Bib.Services
 {
@@ -33,6 +33,13 @@ namespace Bib.Services
         {
             return await _unitOfWork.UserRepository.GetAsync(id)
                 .ContinueWith(user => _mapper.Map<UserViewModel>(user.Result));
+        }
+
+        public async Task<bool> Authenticate(LoginViewModel loginViewModel)
+        {
+            Contract.Requires(loginViewModel != null);
+            var user = _mapper.Map<User>(loginViewModel);
+            return await _unitOfWork.UserRepository.VerifyAuthentificationAsync(user);
         }
     }
 }

@@ -8,5 +8,6 @@ namespace Bib.Services
     {
         Task<IEnumerable<UserViewModel>> GetAllAsync();
         Task<UserViewModel> GetAsync(int id);
+        Task<bool> Authenticate(LoginViewModel user);
     }
 }

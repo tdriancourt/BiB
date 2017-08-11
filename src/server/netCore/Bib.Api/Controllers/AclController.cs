@@ -9,6 +9,7 @@ namespace Bib.Api
     {
         [HttpGet("{id:int?}")]
         //[ProducesResponseType()]
+        #pragma warning disable CS1998
         public async Task<ActionResult> Acls(int? id)
         {
             return Ok();
@@ -16,6 +17,7 @@ namespace Bib.Api
 
         [HttpPost]
         //[ProducesResponseType()]
+        #pragma warning disable CS1998
         public async Task<ActionResult> CreateAcl([FromBody]Acl acl)
         {
             if(!ModelState.IsValid)

@@ -103,6 +103,7 @@
     "code-point-at": "^1.1.0",
     "codelyzer": "^3.0.1",
     "compression-webpack-plugin": "^0.4.0",
+    "concurrently": "^3.5.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
     "diff": "^3.2.0",
@@ -228,6 +229,7 @@
     "start": "npm run server:dev",
     "start:client": "npm run client:dev:hot",
     "start:server": "ts-node ./src/server/Hapi/server.ts",
+    "start:full": "concurrently \"webpack-dev-server --config config/webpack.client.dev.js --progress --profile --watch --content-base src/\" \"dotnet run --environment=\"DEV\" --project ./src/server/netCore/Bib.Api/Bib.Api.csproj\" ",
     "preversion": "npm test",
     "version": "npm run build",
     "postversion": "git push && git push --tags"

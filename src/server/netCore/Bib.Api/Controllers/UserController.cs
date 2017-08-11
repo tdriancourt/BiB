@@ -40,6 +40,7 @@ namespace Bib.Api
 
         [HttpPost]
         //[ProducesResponseType()]
+        #pragma warning disable CS1998
         public async Task<ActionResult> CreateUser([FromBody]User user)
         {
             if (!ModelState.IsValid)

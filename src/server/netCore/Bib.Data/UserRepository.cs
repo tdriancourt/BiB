@@ -14,5 +14,10 @@ namespace Bib.Data
         public UserRepository(BibContext context) : base(context)
         {
         }
+
+        public Task<bool> VerifyAuthentificationAsync(User user)
+        {
+            return Context.User.AnyAsync(u => u.AccountName == user.AccountName && u.Password == user.Password);
+        }
     }
 }

@@ -9,13 +9,20 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0-preview1-final" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.1.2" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0-preview1-final" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../Bib.Domain/Bib.Domain.csproj" />
-    <ProjectReference Include="..\Bib.Services\Bib.Services.csproj" />
-    <ProjectReference Include="..\Bib.Data\Bib.Data.csproj" />
+    <ProjectReference Include="../Bib.Services/Bib.Services.csproj" />
+    <ProjectReference Include="../Bib.Data/Bib.Data.csproj" />
   </ItemGroup>
+  <Target Name="MyPreCompileTarget" BeforeTargets="Build">
+    <ItemGroup>
+      <AssetItems Include="../../../assets/i18n/*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(AssetItems)" DestinationFolder="$(OutputPath)/assets" ContinueOnError="false"/>
+  </Target>
 </Project>
