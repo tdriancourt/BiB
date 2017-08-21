@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bib.Data
 {
-    public class AclRepository : BaseRepository<Acl>, IAclRepository
+    public class AclRepository : BaseAsyncRepository<Acl>, IAclRepository
     {
         public AclRepository(BibContext context) : base(context)
         {

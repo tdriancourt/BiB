@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Reflection;
-using Bib.Data;
+﻿using Bib.Data;
 using Bib.Domain;
 using Bib.Domain.Model;
 using Bib.Domain.Repositories;
@@ -14,6 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace Bib.Api
 {
@@ -47,10 +47,21 @@ namespace Bib.Api
             });
 
             Bib.Services.Configure.ConfigureMapping(services);
-            services.AddTransient<IUserRepository, UserRepository>();
+
+            // Data Layer
             services.AddTransient<IAclRepository, AclRepository>();
-            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserGroupRepository, UserGroupRepository>();
+
+            // Service Layer
+            services.AddTransient<IAclService, AclService>();
+            services.AddTransient<IBorrowService, BorrowService>();
+            services.AddTransient<IMediaService, MediaService>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IUserGroupService, UserGroupService>();
+            
+            // Presentation Layer
             services.AddSingleton<IAssetFileProvider>(new AssetFileProvider(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "assets")));
         }
 

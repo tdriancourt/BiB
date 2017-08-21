@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.Contracts;
 using Bib.Domain;
 using Bib.Domain.Model;
 using Bib.Domain.Repositories;
@@ -12,12 +13,20 @@ namespace Bib.Data
         private BibContext _context;
         private IDbContextTransaction _transaction;
         
-        public UnitOfWork(BibContext context, IAclRepository aclRepository, IUserRepository userRepository)
+        public UnitOfWork(BibContext context, 
+        IAclRepository aclRepository, 
+        IUserRepository userRepository,
+        IUserGroupRepository userGroupRepository)
         {
+            Contract.Requires(context != null);
+            Contract.Requires(aclRepository != null);
+            Contract.Requires(userRepository != null);
+            Contract.Requires(userGroupRepository != null);
+            _context = (BibContext)context;
             AclRepository = aclRepository;
             UserRepository = userRepository;
-            _context = (BibContext)context;
-            _transaction = _context.Database.BeginTransaction();
+            UserGroupRepository = userGroupRepository;
+            _transaction = _context.Database.BeginTransaction();                       
         }
         
         public IAclRepository AclRepository { get; private set; }

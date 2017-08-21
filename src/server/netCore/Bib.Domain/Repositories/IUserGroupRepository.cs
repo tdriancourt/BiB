@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bib.Domain.Repositories
 {
-    public interface IUserGroupRepository : IRepository<UserGroup>
+    public interface IUserGroupRepository : IAsyncRepository<UserGroup>
     {
     }
 }

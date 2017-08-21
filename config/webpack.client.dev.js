@@ -3,7 +3,7 @@ const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const webpackMergeDll = webpackMerge.strategy({plugins: 'replace'});
 const commonConfig = require('./webpack.client.common.js'); // the settings that are common to prod and dev
 const path = require('path');
-const WatchIgnorePlugin = require("webpack").WatchIgnorePlugin;
+
 /**
  * Webpack Plugins
  */
@@ -141,10 +141,6 @@ module.exports = function(options) {
      * See: https://github.com/webpack/webpack/commit/a04ffb928365b19feb75087c63f13cadfc08e1eb
      */
     new NamedModulesPlugin(),
-
-    new WatchIgnorePlugin([
-            path.resolve(__dirname, '/server/netCore/**/.*'),
-    ]),
 
   ],
 

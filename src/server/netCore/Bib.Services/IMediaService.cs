@@ -5,6 +5,6 @@ namespace Bib.Services
 {
     public interface IMediaService
     {
-         Task<MediaViewModel> GetTaskAsync(int id);
+         Task<MediaViewModel> GetAllAsync(int id);
     }
 }

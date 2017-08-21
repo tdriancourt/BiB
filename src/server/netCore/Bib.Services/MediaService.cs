@@ -3,9 +3,9 @@ using Bib.Services.ViewModels;
 
 namespace Bib.Services
 {
-    public class BorrowService : IBorrowService
+    public class MediaService : IMediaService
     {
-        public Task<BorrowViewModel> GetAllAsync()
+        public Task<MediaViewModel> GetAllAsync(int id)
         {
             throw new System.NotImplementedException();
         }

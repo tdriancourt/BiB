@@ -22,7 +22,7 @@ namespace Bib.Api
         }
 
         [HttpGet("{id:int?}")]
-        [ProducesResponseType(typeof(User), 200)]
+        [ProducesResponseType(type: typeof(UserViewModel), statusCode: 200)]
         public async Task<ActionResult> Users(int? id)
         {
             try
