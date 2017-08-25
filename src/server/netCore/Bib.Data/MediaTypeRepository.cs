@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bib.Data
 {
-    public class MediaTypeRepository : BaseRepository<MediaType>, IMediaTypeRepository 
+    public class MediaTypeRepository : BaseAsyncRepository<MediaType>, IMediaTypeRepository 
     {
         public MediaTypeRepository(BibContext context) : base(context)
         {

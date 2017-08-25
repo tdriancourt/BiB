@@ -49,17 +49,21 @@ namespace Bib.Api
             Bib.Services.Configure.ConfigureMapping(services);
 
             // Data Layer
-            services.AddTransient<IAclRepository, AclRepository>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddTransient<IUserRepository, UserRepository>();
-            services.AddTransient<IUserGroupRepository, UserGroupRepository>();
+            services.AddScoped<IAclRepository, AclRepository>();
+            services.AddScoped<IBorrowRepository, BorrowRepository>();
+            services.AddScoped<IMediaTypeRepository, MediaTypeRepository>();
+            services.AddScoped<IMediumRepository, MediumRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUserGroupRepository, UserGroupRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             // Service Layer
             services.AddTransient<IAclService, AclService>();
             services.AddTransient<IBorrowService, BorrowService>();
-            services.AddTransient<IMediaService, MediaService>();
-            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IMediaTypeService, MediaTypeService>();
+            services.AddTransient<IMediumService, MediumService>();
             services.AddTransient<IUserGroupService, UserGroupService>();
+            services.AddTransient<IUserService, UserService>();
             
             // Presentation Layer
             services.AddSingleton<IAssetFileProvider>(new AssetFileProvider(Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "assets")));

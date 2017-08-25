@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bib.Domain.Repositories
 {
-    public interface IMediaTypeRepository : IRepository<MediaType>
+    public interface IMediaTypeRepository : IAsyncRepository<MediaType>
     {
     }
 }

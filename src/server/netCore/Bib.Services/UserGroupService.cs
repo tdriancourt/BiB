@@ -7,30 +7,22 @@ using Bib.Services.ViewModels;
 
 namespace Bib.Services
 {
-    public class UserGroupService : IUserGroupService
+    public class UserGroupService : BaseService, IUserGroupService
     {
-        private IMapper _mapper;
-        private IUnitOfWork _unitOfWork;
-        
-        
-        public UserGroupService(IMapper mapper, IUnitOfWork unitOfWork)
+        public UserGroupService(IMapper mapper, IUnitOfWork unitOfWork) : base(mapper, unitOfWork)
         {
-            Contract.Requires(mapper != null);
-            Contract.Requires(unitOfWork != null);
-            _mapper = mapper;
-            _unitOfWork = unitOfWork;
         }
 
         public async Task<IEnumerable<UserGroupViewModel>> GetAllAsync()
         {
-             return await _unitOfWork.UserGroupRepository.GetAllAsync()
-                .ContinueWith(userGroups => _mapper.Map<IEnumerable<UserGroupViewModel>>(userGroups.Result));
+             return await UnitOfWork.UserGroupRepository.GetAllAsync()
+                .ContinueWith(userGroups => Mapper.Map<IEnumerable<UserGroupViewModel>>(userGroups.Result));
         }
 
         public async Task<UserGroupViewModel> GetAsync(int id)
         {
-            return await _unitOfWork.UserGroupRepository.GetAsync(id)
-                .ContinueWith(userGroup => _mapper.Map<UserGroupViewModel>(userGroup.Result));
+            return await UnitOfWork.UserGroupRepository.GetAsync(id)
+                .ContinueWith(userGroup => Mapper.Map<UserGroupViewModel>(userGroup.Result));
         }
     }
 }

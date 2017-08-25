@@ -6,5 +6,6 @@ namespace Bib.Services
     public interface IBorrowService
     {
          Task<BorrowViewModel> GetAllAsync();
+         Task<BorrowViewModel> GetAsync(int id);
     }
 }

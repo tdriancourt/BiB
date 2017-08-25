@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bib.Domain.Repositories
 {
-    public interface IUserSettingsRepository : IRepository<UserSettings>
+    public interface IUserSettingsRepository : IAsyncRepository<UserSettings>
     {
     }
 }

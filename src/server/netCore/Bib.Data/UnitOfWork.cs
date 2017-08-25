@@ -15,15 +15,24 @@ namespace Bib.Data
         
         public UnitOfWork(BibContext context, 
         IAclRepository aclRepository, 
+        IBorrowRepository borrowRepository,
+        IMediaTypeRepository mediaTypeRepository,
+        IMediumRepository mediumRepository,
         IUserRepository userRepository,
         IUserGroupRepository userGroupRepository)
         {
             Contract.Requires(context != null);
             Contract.Requires(aclRepository != null);
+            Contract.Requires(borrowRepository != null);
+            Contract.Requires(mediaTypeRepository != null);
+            Contract.Requires(mediumRepository != null);
             Contract.Requires(userRepository != null);
             Contract.Requires(userGroupRepository != null);
             _context = (BibContext)context;
             AclRepository = aclRepository;
+            BorrowRepository = borrowRepository;
+            MediaTypeRepository = mediaTypeRepository;
+            MediumRepository = mediumRepository;
             UserRepository = userRepository;
             UserGroupRepository = userGroupRepository;
             _transaction = _context.Database.BeginTransaction();                       

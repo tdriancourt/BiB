@@ -28,5 +28,10 @@ namespace Bib.Data
         { 
             return await Context.Set<T>().Where(e => e.Id == id).SingleAsync();
         }
+
+        public async Task<int> CountAsync()
+        {
+            return await Context.Set<T>().CountAsync();
+        }
     }
 }

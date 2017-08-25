@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bib.Data
 {
-    public class ReaderRepository : BaseRepository<Reader>, IReaderRepository
+    public class ReaderRepository : BaseAsyncRepository<Reader>, IReaderRepository
     {
         public ReaderRepository(BibContext context) : base(context)
         {

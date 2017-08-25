@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bib.Domain.Repositories
 {
-    public interface IReaderRepository : IRepository<Reader>
+    public interface IReaderRepository : IAsyncRepository<Reader>
     {
     }
 }

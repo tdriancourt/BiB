@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bib.Data
 {
-    public class UserSettingsRepository : BaseRepository<UserSettings>, IUserSettingsRepository
+    public class UserSettingsRepository : BaseAsyncRepository<UserSettings>, IUserSettingsRepository
     {
         public UserSettingsRepository(BibContext context) : base(context)
         {

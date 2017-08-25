@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Bib.Domain.Repositories
 {
-    public interface IMediumRepository : IRepository<Medium>
+    public interface IMediumRepository : IAsyncRepository<Medium>
     {
     }
 }
