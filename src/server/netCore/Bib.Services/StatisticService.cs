@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using AutoMapper;
 using Bib.Domain;
 using Bib.Services.ViewModels;
@@ -10,13 +11,13 @@ namespace Bib.Services
         {
         }
 
-        public async StatisticalViewModel GetAsync()
+        public async Task<StatisticalViewModel> GetAsync()
         {
             return new StatisticalViewModel()
             {
                 BorrowsCount = await UnitOfWork.BorrowRepository.CountAsync(),
                 MediaCount = await UnitOfWork.MediumRepository.CountAsync(),
-                OverduesCount = await UnitOfWork.MediumRepository.GetOverduesCountAsync(),
+                OverduesCount = await UnitOfWork.MediumRepository.GetOverduesCountAsync(15),
                 ReadersCount = await UnitOfWork.ReaderRepository.CountAsync(),
                 UsersCount = await UnitOfWork.UserRepository.CountAsync()
             };

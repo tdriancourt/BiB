@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 using Bib.Data;
 using Bib.Domain.Model;
 using Bib.Domain.Repositories;
@@ -13,6 +14,13 @@ namespace Bib.Data
     {
         public MediumRepository(BibContext context) : base(context)
         {
+        }
+
+        public Task<int> GetOverduesCountAsync(int loanDuration)
+        {
+            var limitDate = DateTime.Now.AddDays(-loanDuration);
+            return this.Context.Borrow.Where(b => b.BorrowDate < limitDate && !b.ReturnDate.HasValue)
+            .CountAsync();
         }
     }
 }

@@ -8,8 +8,8 @@ namespace Bib.Domain.Model
         public long Id { get; set; }
         public long ReaderId { get; set; }
         public long MediumId { get; set; }
-        public string BorrowDate { get; set; }
-        public string ReturnDate { get; set; }
+        public DateTime BorrowDate { get; set; }
+        public DateTime? ReturnDate { get; set; }
 
         public virtual Medium Medium { get; set; }
         public virtual Reader Reader { get; set; }
